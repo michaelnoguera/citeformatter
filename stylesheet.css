@@ -1,0 +1,28 @@
+h1,h2,h3{
+    margin: 0;
+    font-family: 'Noto Serif', serif;
+}
+body{
+    margin: 5% 20%;
+    background-color: #fdfdfd;
+    font-family: 'Noto Serif JP', sans-serif;
+}
+input{
+    width: 50%;
+}
+.radio{
+    width: 5%;
+}
+#block{
+    font-size: 140%;
+    text-decoration: underline;
+    font-weight: bold;
+    text-align: center;
+}
+#tag{
+    font-size: 105%;
+     font-weight: bold;
+}
+#cite{
+    font-size: 95%;
+}
