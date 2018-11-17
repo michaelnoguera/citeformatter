@@ -1,99 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Cite Formatter Form</title>
-        <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP|Noto+Serif:400,700" rel="stylesheet"> 
-        <style>
-            h1,h2,h3{
-                margin: 0;
-                font-family: 'Noto Serif', serif;
-            }
-            body{
-                margin: 5% 20%;
-                background-color: #fdfdfd;
-                font-family: 'Noto Serif JP', sans-serif;
-            }
-            input{
-                width: 50%;
-            }
-            #block{
-                font-size: 140%;
-                text-decoration: underline;
-                font-weight: bold;
-                text-align: center;
-            }
-            #tag{
-                font-size: 105%;
-                font-weight: bold;
-            }
-            #cite{
-                font-size: 95%;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="header">
-            <h1>Cite Formatter Form</h1>
-            This automatically compiles all the information needed to create a citation in debate into the correct format because Michael is lazy.
-        </div>
-        <div id="inputs" style="display: block;">
-            <br>
-            <h2>Card Info</h2>
-            <p><b>A2:</b><input id="A2"></p>
-            <p><b>Tagline </b><input id="tagline"></p>
-            <p><b>Author(s) </b><input id="author"></p>
-            <p><b>Date (in format MM-DD-YYYY) </b><input id="date"></p>
-            <p><b>Title of article, study, etc. </b><input id="title"></p>
-            <p><b>Publication </b><input id="publication"></p>
-            <p><b>URL </b><input id="url"></p>
-            <p><button id="submit">Generate</button></p>
-        </div>
-        <div id="back-wrapper" style="display: none;">
-            <p><button id="back">Edit Info</button></p>
-            <p>
-                <h2>Your cite is ready!</h2>
-                Simply copy/paste the text below.
-            </p>
-            <p>
+
+<head>
+    <title>Cite Formatter Form</title>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP|Noto+Serif:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<body>
+    <div id="header">
+        <h1>Cite Formatter Form</h1>
+        This automatically compiles all the information needed to create a citation in debate into the correct format
+        because Michael is lazy.
+    </div>
+    <div id="inputs" style="display: block;">
+        <br>
+        <h2>Card Info</h2>
+        <p>
+            <input type="radio" class="radio" name="type" id="radio-card" checked>Just a card.<br>
+            <input type="radio" class="radio" name="type" id="radio-A2">A2:<input id="A2" disabled="true"><br>
+            <input type="radio" class="radio" name="type" id="radio-frontline">Frontline:<input id="frontline" disabled="true"><br>
+            <input type="radio" class="radio" name="type" id="radio-indict">Indict:<input id="indict" disabled="true">
+        </p>
+        <p><b>Tagline </b><input id="tagline"></p>
+        <p><b>Author(s) </b><input id="author"></p>
+        <p><b>Date (in format MM-DD-YYYY) </b><input id="date"></p>
+        <p><b>Title of article, study, etc. </b><input id="title"></p>
+        <p><b>Publication </b><input id="publication"></p>
+        <p><b>URL </b><input id="url"></p>
+        <p><button id="submit">Generate</button></p>
+    </div>
+    <div id="back-wrapper" style="display: none;">
+        <p><button id="back">Edit Info</button></p>
+        <p>
+            <h2>Your cite is ready!</h2>
+            Simply copy/paste the text below.
+        </p>
+        <p>
             <h3>A few reminders...</h3>
-                <ul>
-                    <li>Remember to also include the full text of the article, or at least the surrounding paragraphs.</li>
-                    <li>Format the text by bolding/underlining important information, and highlighting in yellow what you want to read aloud.</li>
-                    <li>Also include any analysis of the card that you wish to read, highlighted in green.</li>
-                </ul>
-            </p>
-            <hr>
-        </div>
-        <div id="outputs" style="display: none;">
-            <p id="block" style=""></p>
-            <p id="tag"></p>
-            <p id="cite"></p>
-        </div>
-        <script>
-        function format() {
-            var block = "A2: " + document.getElementById('A2').value;
-            var tag = document.getElementById('tagline').value;
-            var cite = document.getElementById('author').value + ", " + document.getElementById('date').value + 
-                ', "' + document.getElementById('title').value + '", ' + document.getElementById('publication').value +
-                ', <a href="' + document.getElementById('url').value + '">'+document.getElementById('url').value+"</a>";
+            <ul>
+                <li>Remember to also include the full text of the article, or at least the surrounding paragraphs.</li>
+                <li>Format the text by bolding/underlining important information, and highlighting in yellow what you
+                    want to read aloud.</li>
+                <li>Also include any analysis of the card that you wish to read, highlighted in green.</li>
+            </ul>
+        </p>
+        <hr>
+    </div>
+    <div id="outputs" style="display: none;">
+        <p id="block"></p>
+        <p id="tag"></p>
+        <p id="cite"></p>
+    </div>
 
-            document.getElementById('block').innerHTML = block;
-            document.getElementById('tag').innerHTML = tag;
-            document.getElementById('cite').innerHTML = cite;
-            document.getElementById('inputs').style.display = 'none';
-            document.getElementById('outputs').style.display = 'block';
-            document.getElementById('back-wrapper').style.display = 'block';
+    <script src="citeformatter.js"></script>
+</body>
 
-        }
-        function back(){
-            document.getElementById('back-wrapper').style.display = 'none';
-            document.getElementById('outputs').style.display = 'none';
-            document.getElementById('inputs').style.display = 'block';
-        }
-        document.getElementById('submit').addEventListener('click', format);
-        document.getElementById('back').addEventListener('click', back);
-
-        </script>
-     
-    </body>
 </html>
